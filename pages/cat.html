@@ -1,0 +1,11 @@
+<div id="cat-input">
+  <select ng-model="server" ng-change="change()" ng-options="server.name group by server.group for server in servers">
+  	<option value="">{{selectServer}}</option>
+  </select>
+  <dir content="dirTree" ng-bind-html="dirTree" id="dir_tree"></dir>
+</div>
+
+
+
+
+

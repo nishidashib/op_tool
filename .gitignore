@@ -1,0 +1,5 @@
+*bak
+*org
+node_modules/
+bower_components/
+modules/dir_tree_*
