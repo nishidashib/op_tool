@@ -1,0 +1,6 @@
+*bak
+*org
+node_modules/
+bower_components/
+sample*
+bootstrap_index.html

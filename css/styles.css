@@ -1,0 +1,61 @@
+body {
+	font-family:  "Hiragino Kaku Gothic ProN", "游ゴシック", YuGothic, Meiryo, sans-serif;
+}
+#wrapper {
+	overflow: hidden;
+}
+header {
+    padding:10px 10px 11px 10px;
+    border-bottom: 1px solid #000;
+}
+
+header a {
+	display: block;
+	text-decoration: none;
+    color: #fff;
+    font-size: 2em;
+    font-weight: normal;
+}
+#side {
+	width: 10%;
+	float: left;
+}
+#side a {
+	display: block;
+	height: 50px;
+	text-decoration: none;
+	color: #fff;
+}
+#side span {
+	color: #fff;
+	display: block;
+	height: 50px;
+	line-height: 50px;
+	font-size: 1.2em;
+	text-align: center;
+}
+#side a:hover{
+	background-color: #000;
+}
+.dropdown{
+	background: url(../img/ha-down.gif) 92% 20px no-repeat;
+}
+.dropdown.active{
+	background: url(../img/ha-up.gif) 92% 20px no-repeat;
+}
+.toggle{
+	display: none;
+}
+#main {
+	position: relative;
+	float: right;
+	background-color: #fff;
+	width: 90%;
+	padding: 0% 0% 100% 0%;
+	overflow: scroll;
+}
+.clearfix{
+	clear: "both";
+	content: "";
+	display: block;
+}

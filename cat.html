@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="shibasaki">
+    <title>cat</title>
+    <link rel="stylesheet" href="css/reset.css" media="all">
+    <link rel="stylesheet" href="css/styles.css" media="all">
+    <link rel="stylesheet" href="css/login.css" media="all">
+    <link rel="stylesheet" href="css/cat.css" media="all">
+    <script src="./js/jquery-1.11.0.js"></script>
+    <script src="js/jquery-ui-1.11.4.min.js"></script>
+    <script src="./js/leanModal.min.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/cat.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <a href="index.html"><h1>OPERATION TOOL</h1></a>
+        </header>
+        <div id="contents" class="clearfix">
+            <script>side();</script>
+            <div id="main">
+                <div id="cat-input">
+                    <select>
+                        <option value="select">--select--</option>
+                        <script>select();</script>
+                    </select>
+                </div>
+            </div><!-- /#main -->
+        </div><!-- /#contents -->
+        <div id="modal-source"><!-- ソース表示に使用-->
+            <div class="modal_close"></div>
+            <div id="modal_insert"></div>
+        </div><!-- /#mmodal-source -->
+
+        <!-- 以下二つは隠しリンク。これがないと、ajaxで取得した要素に対してleanmodalできない。-->
+        <!-- ソース表示用隠しリンク -->
+        <a href="#modal-source" id="modal-source-hiddenLink" style="display:none"></a>
+        <!-- ログインフォーム用隠しリンク -->
+        <a href="#modal-login" id="modal-login-hiddenLink" style="display:none"></a>
+    </div><!-- /#wrapper -->
+</body>
+</html>
