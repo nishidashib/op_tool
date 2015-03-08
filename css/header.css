@@ -1,0 +1,38 @@
+header {
+    padding:10px 10px 11px 10px;
+    color: #fff;
+    border-bottom: 1px solid #000;
+}
+
+#side {
+	width: 10%;
+	float: left;
+}
+#side a {
+	display: block;
+	height: 50px;
+	text-decoration: none;
+	color: #fff;
+}
+#side a span {
+	display: block;
+	height: 50px;
+	line-height: 50px;
+	font-size: 1.2em;
+	text-align: center;
+}
+#side a:hover{
+	background-color: #000;
+}
+#main {
+	float: right;
+	background-color: #fff;
+	width: 90%;/*これが設定されてないと、文字がホンマ一番右によってしまう。*/
+	padding: 0% 0% 100% 0%;
+	/*paddingで領域確保。あくまで仮*/
+}
+.clearfix{
+	clear: "both";
+	content: "";
+	display: block;
+}
