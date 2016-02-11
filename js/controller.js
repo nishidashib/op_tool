@@ -28,16 +28,11 @@ app.controller('selectController', ['$scope' , '$sce' ,'$http' ,'$uibModal',func
 		})
 		.then(function dataGet(response){
 			//ng-clickも当然信頼ずみ。勝手にサニタイズされないように。
-			//httpで取得してくるshowメソッドが勝手に消されるのを防止する。
-			//でshowメソッドをクリックしてもscopeとして認識されないからng-clickされない。
-			// $scope.dirTree = $sce.trustAs($sce.HTML,response.data);
-
-			//あれ？これでも勝手にサニタイズされないけど。
-			//かつhttpで取得してきたshowメソッドがscopeで認識された。
+			//$scope.dirTree = $sce.trustAs($sce.HTML,response.data);
 			$scope.dirTree = response.data;
 			loadingModal.close();
-		})
-		.finally(function(){
+		},function errorCallback(response){
+			alert(response);
 		})
 	}
 	$scope.show = function($event) {
@@ -46,28 +41,33 @@ app.controller('selectController', ['$scope' , '$sce' ,'$http' ,'$uibModal',func
 	        method:'POST',
 	        url:'/op_tool/modules/show_source.php',
 	        data: $.param({ 'source' : $event.target.attributes.name.value}),
-	        headers:{'Content-Type': 'application/x-www-form-urlencoded'}
+	        headers:{'Content-Type': 'application/x-www-form-urlencoded' , 'Cache-Control': 'no-cache'}
 	      })
-	      .then(function dataGet(response){
-	          $scope.getSource = response.data;
-	      },function dataError(response){
-	        //alert(response);
+	      .then(function sourceGet(response){
+	        $scope.getSource = response.data;
+	      	// console.log("show() = " + $scope.getSource)
+	      },function errorCallback(response){
+	        alert(response);
 	      })
-
-	    // $scope.getSource = "test";
-	    var sourceModal = $modal.open({
-	      templateUrl: 'template/sourceView.html',
-	      controller: 'ModalCtrl',
-	      scope: $scope
-	    });
+	      .finally(function sourceShow(){
+		    var sourceModal = $modal.open({
+		      templateUrl: 'template/sourceView.html',
+		      controller: 'ModalCtrl',
+		      scope: $scope
+		    });
+	      })
 	}
 }]);
 app.controller('ModalCtrl', ['$scope', '$uibModalInstance' ,function($scope, $sourceModal) {
-      $scope.message = $scope.getSource;
+      $scope.source = $scope.getSource;
+      // console.log("Modal = " + $scope.source);
       $scope.ok = function() {
             $sourceModal.close();
       }
     }])
+/*
+ここだけj-queryのままっす。
+*/
 $(document).on('click', 'span.dir', function(event) {
   event.preventDefault();
   $(this).next().toggle("fast");
