@@ -3,7 +3,7 @@ sleep(1);//loading_test
 
 //global varibale
 $server = $_POST['server_name'];
-$path = '/Applications/XAMPP/xamppfiles/htdocs/' . $server . '/';
+$path = $_SERVER['DOCUMENT_ROOT'] . '/' . $server . '/';
 
 function DirTree($path){
 	if ($handle = opendir($path)){
