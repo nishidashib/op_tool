@@ -1,5 +1,5 @@
 function select(){
-	$.getJSON('./config/select.json', null, function(data, textStatus) {
+	$.getJSON('./modules/dirSearch.php', null, function(data, textStatus) {
 		for(var i in data){
 		$('select').append("<option value='" + data[i].name + "'>" + data[i].name + "</option>")
 		}
