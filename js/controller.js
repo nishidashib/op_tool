@@ -7,11 +7,15 @@ app.controller('mainsCtrl', function($http, $scope){
 	*/
 });
 app.controller('selectController', ['$scope' , '$sce' ,'$http' ,'$uibModal',function($scope , $sce, $http ,$modal){
-	$scope.servers = [
-		{name: 'kibana',group: 'group1'},
-		{name: 'js_samples',group: 'group2'},
-		{name: 'angular',group: 'group3'}
-	];
+	$http({
+	method:'GET',
+	url:'/op_tool/modules/dirSearch.php'
+	})
+	.then(function selectData(response){
+		$scope.servers = response.data;
+	},function errorCallback(response){
+		alert(response);
+	})
 	$scope.selectServer = "--select--";
 	$scope.change = function(){
 		$scope.selectServer = $scope.server.name;
