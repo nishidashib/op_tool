@@ -1,8 +1,18 @@
 <div id="cat-input">
-  <select ng-model="server" ng-change="change()" ng-options="server.name for server in servers">
-  	<option value="">{{selectServer}}</option>
-  </select>
-  <dir content="dirTree" ng-bind-html="dirTree" id="dir_tree"></dir>
+	<select ng-model="server" ng-change="change()" ng-options="server.name for server in servers">
+		<option value="">{{selectServer}}</option>
+	</select>
+	<ul>
+		<li ng-repeat="data in tree" ng-include="'dirTree.html'"></li>
+	</ul>
+<!-- <dir content="dirTree" ng-bind-html="dirTree" id="dir_tree"></dir> -->
+	<script type="text/ng-template" id="dirTree.html">
+		<a ng-click="show($event)" name="{{data.path}}" ng-if="!data.dir">{{data.file}}</a>
+		<span class="dir" ng-if="!!data.dir">+ {{data.dir}}</span>
+		<ul ng-if="!!data.dir">
+			<li ng-repeat="data in data.dirContents[0]" ng-include="'dirTree.html'"></li>
+		</ul>
+	</script>
 </div>
 
 

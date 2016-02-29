@@ -79,21 +79,20 @@ position: absolute;
 .navbar-top-links li {
   display: inline-block; }
 
-#dir_tree li {
+#cat-input li {
   list-style: none; }
 
-#dir_tree a {
+#cat-input a {
   color: #0000ff;
   text-decoration: none; }
-  #dir_tree a:hover {
+  #cat-input a:hover {
     font-weight: bold; }
 
-#dir_tree span.dir:hover {
+#cat-input span.dir:hover {
   font-weight: bold; }
 
-#dir_tree span.dir ~ * {
+#cat-input span.dir ~ * {
   display: none; }
-
 /*
 button {
     display: none;

@@ -1,22 +1,8 @@
 var app = angular.module('app')
 app.controller('mainsCtrl', function($http, $scope){
-	/*
-	$scope.show = function($event) {
-		console.log($event.target.attributes.name.value);
-	}
-	*/
 });
+
 app.controller('selectController', ['$scope' , '$sce' ,'$http' ,'$uibModal',function($scope , $sce, $http ,$modal){
-	$http({
-	method:'GET',
-	url:'/op_tool/modules/dirSearch.php'
-	})
-	.then(function selectData(response){
-		$scope.servers = response.data;
-	},function errorCallback(response){
-		alert(response);
-	})
-	$scope.selectServer = "--select--";
 	$scope.change = function(){
 		$scope.selectServer = $scope.server.name;
 		// console.log($scope.server.name);
@@ -33,7 +19,7 @@ app.controller('selectController', ['$scope' , '$sce' ,'$http' ,'$uibModal',func
 		.then(function dataGet(response){
 			//ng-clickも当然信頼ずみ。勝手にサニタイズされないように。
 			//$scope.dirTree = $sce.trustAs($sce.HTML,response.data);
-			$scope.dirTree = response.data;
+			$scope.tree = response.data;
 			loadingModal.close();
 		},function errorCallback(response){
 			alert(response);
@@ -62,6 +48,7 @@ app.controller('selectController', ['$scope' , '$sce' ,'$http' ,'$uibModal',func
 	      })
 	}
 }]);
+
 app.controller('ModalCtrl', ['$scope', '$uibModalInstance' ,function($scope, $sourceModal) {
       $scope.source = $scope.getSource;
       // console.log("Modal = " + $scope.source);

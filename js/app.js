@@ -26,4 +26,16 @@ angular.module('app', ['ui.router','ngSanitize', 'ui.bootstrap'])
               $scope.open = function() {
                 $modal.open({templateUrl:"template/login.html", scope: $scope});
               };
+    }])
+    .run(["$rootScope","$http",function($scope,$http){
+        $http({
+            method:'GET',
+            url:'/op_tool/modules/dirSearch.php'
+        })
+        .then(function selectData(response){
+            $scope.servers = response.data;
+        },function errorCallback(response){
+            alert(response);
+        })
+        $scope.selectServer = "--select--";
     }]);
