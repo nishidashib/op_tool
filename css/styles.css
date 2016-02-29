@@ -1,61 +1,145 @@
+@charset "UTF-8";
+.navbar-inverse .navbar-brand {
+  color: #fff; }
+.navbar-inverse .navbar-brand:hover {
+  color: #9d9d9d;
+  background-color: transparent; }
 body {
-	font-family:  "Hiragino Kaku Gothic ProN", "游ゴシック", YuGothic, Meiryo, sans-serif;
-}
-#wrapper {
-	overflow: hidden;
-}
-header {
-    padding:10px 10px 11px 10px;
-    border-bottom: 1px solid #000;
+    background-color: #222;
 }
 
-header a {
-	display: block;
-	text-decoration: none;
-    color: #fff;
-    font-size: 2em;
-    font-weight: normal;
+#wrapper {
+  width: 100%;
+  height: 100%; }
+
+nav a {
+  /*color : #9d9d9d;*/
+  color: #fff; 
 }
-#side {
-	width: 10%;
-	float: left;
+#page-wrapper {
+    padding: 0 15px;
+    min-height: 568px;
+    height: 100%;
+    /*568だったらPCだと下まで白くならないので付け足した。*/
+    background-color: #fff;
 }
-#side a {
-	display: block;
-	height: 50px;
-	text-decoration: none;
-	color: #fff;
+@media(min-width:768px) {
+    #page-wrapper {
+        position: inherit;
+        margin: 0 0 0 250px;
+        padding: 0 30px;
+        border-left: 1px solid #e7e7e7;
+    }
 }
-#side span {
-	color: #fff;
-	display: block;
-	height: 50px;
-	line-height: 50px;
-	font-size: 1.2em;
-	text-align: center;
+.navbar-top-links {
+    margin-right: 0;
 }
-#side a:hover{
-	background-color: #000;
+.navbar-top-links li {
+    display: inline-block;
 }
-.dropdown{
-	background: url(../img/ha-down.gif) 92% 20px no-repeat;
+.navbar-top-links li:last-child {
+    margin-right: 15px;
 }
-.dropdown.active{
-	background: url(../img/ha-up.gif) 92% 20px no-repeat;
+
+.navbar-top-links li a {
+    padding: 15px;
+    min-height: 50px;
 }
-.toggle{
-	display: none;
+.navbar-top-links .dropdown-menu li {
+    display: block;
 }
-#main {
-	position: relative;
-	float: right;
-	background-color: #fff;
-	width: 90%;
-	padding: 0% 0% 100% 0%;
-	overflow: scroll;
+
+.navbar-top-links .dropdown-menu li:last-child {
+    margin-right: 0;
 }
-.clearfix{
-	clear: "both";
-	content: "";
-	display: block;
+
+.navbar-top-links .dropdown-menu li a {
+    padding: 3px 20px;
+    min-height: 0;
 }
+
+.navbar-top-links .dropdown-menu li a div {
+    white-space: normal;
+}
+
+.navbar-top-links .dropdown-messages,
+.navbar-top-links .dropdown-tasks,
+.navbar-top-links .dropdown-alerts {
+    width: 310px;
+    min-width: 0;
+}
+
+.navbar-top-links .dropdown-messages {
+    margin-left: 5px;
+}
+
+.navbar-top-links .dropdown-tasks {
+    margin-left: -59px;
+}
+
+.navbar-top-links .dropdown-alerts {
+    margin-left: -123px;
+}
+
+.navbar-top-links .dropdown-user {
+    right: 0;
+    left: auto;
+}
+
+.sidebar .sidebar-nav.navbar-collapse {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.sidebar .sidebar-search {
+    padding: 15px;
+}
+
+.sidebar ul li {
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.sidebar ul li a.active {
+    background-color: #eee;
+}
+
+.sidebar .arrow {
+    float: right;
+}
+
+.sidebar .fa.arrow:before {
+    content: "\f104";
+}
+
+.sidebar .active>a>.fa.arrow:before {
+    content: "\f107";
+}
+.sidebar .nav-second-level li,
+.sidebar .nav-third-level li {
+    border-bottom: 0!important;
+}
+
+.sidebar .nav-second-level li a {
+    padding-left: 37px;
+}
+@media(min-width:768px) {
+    .sidebar {
+        z-index: 1;
+        position: absolute;
+        width: 250px;
+        margin-top: 51px;
+    }
+
+    .navbar-top-links,
+    .navbar-top-links,
+    .navbar-top-links{
+        margin-left: auto;
+    }
+}
+#wrapper {
+    overflow: hidden;
+}
+
+
+
+

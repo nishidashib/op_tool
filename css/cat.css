@@ -1,18 +1,20 @@
 @import url("styles.css");
-#side .toggle {
-  display: block;
+
+#page-wrapper {
+  position: relative;
 }
-#side .toggle li:first-child{
-	background-color: #000;
-}
-#main {
-  overflow: scroll;
-}
-#main #cat-input {
+#page-wrapper #cat-input {
 	position: absolute;
 	top: 20px;
 	left: 50px;
 	margin-bottom: 40px;
+}
+#page-wrapper #cat-input a{
+  color: #0000EE;
+  text-decoration: none;
+}
+ul {
+    list-style:none;
 }
 #dir_tree {
   margin-left: -20px;
@@ -33,7 +35,6 @@
   width: 100%;
   background: #222;
 }
-
 #loading {
   position: fixed;
   width: 54px;
@@ -42,7 +43,6 @@
   top: 50%;
   left: 50%;
 }
-
 #modal-source {
   background-color: #FFFFFF;
   display: none;
@@ -50,7 +50,7 @@
   height: 100%;
   overflow: scroll;
   position: relative;
-  font-size: 24px;
+  font-size: 17px;
 }
 .modal_close {
   position: fixed;

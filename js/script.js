@@ -2,7 +2,6 @@ $(document).on('click', ".dropdown" ,function(e){
     $(this).next().slideToggle();
     $(this).toggleClass("active");
 })
-
 $(document).on('click', "a[rel=login-func]" ,function(e){
 		url = $(this).attr("href");
 		e.preventDefault();
@@ -54,7 +53,7 @@ function side(){
 		dataType: 'html',
 	})
 	.done(function(data) {
-		$('#contents').append(data);
+		$('#sideMenu').append(data);
 	})
 	.fail(function(data) {
 		alert(error.messeage);
