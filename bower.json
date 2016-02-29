@@ -1,0 +1,25 @@
+{
+  "name": "op_tool",
+  "description": "op_tool",
+  "main": "",
+  "authors": [
+    "nishidashib <foi-no74@i.softbank.jp>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/nishidashib/op_tool",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "font-awesome": "~4.4.0",
+    "jquery-ui": "~1.11.4",
+    "jquery": "~2.1.4",
+    "metisMenu": "~2.1.0"
+  }
+}
