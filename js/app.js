@@ -22,12 +22,10 @@ angular.module('app', ['ui.router','ngSanitize', 'ui.bootstrap'])
         })
         $urlRouterProvider.otherwise("/");
     }])
-    .run(["$rootScope","$uibModal", function($scope, $modal){
-              $scope.open = function() {
-                $modal.open({templateUrl:"template/login.html", scope: $scope});
-              };
-    }])
-    .run(["$rootScope","$http",function($scope,$http){
+    .run(["$rootScope","$uibModal", "$http", function($scope, $modal,$http){
+        $scope.open = function() {
+            $modal.open({templateUrl:"template/login.html", scope: $scope});
+        };
         $http({
             method:'GET',
             url:'/op_tool/modules/dirSearch.php'
@@ -39,3 +37,4 @@ angular.module('app', ['ui.router','ngSanitize', 'ui.bootstrap'])
         })
         $scope.selectServer = "--select--";
     }]);
+

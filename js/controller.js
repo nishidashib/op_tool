@@ -1,8 +1,7 @@
 var app = angular.module('app')
 app.controller('mainsCtrl', function($http, $scope){
 });
-
-app.controller('selectController', ['$scope' , '$sce' ,'$http' ,'$uibModal',function($scope , $sce, $http ,$modal){
+app.controller('selectController', ['$scope' , '$sce' ,'$http' ,'$uibModal','getSource',function($scope,$sce, $http ,$modal,getSource){
 	$scope.change = function(){
 		$scope.selectServer = $scope.server.name;
 		// console.log($scope.server.name);
@@ -10,20 +9,9 @@ app.controller('selectController', ['$scope' , '$sce' ,'$http' ,'$uibModal',func
 			templateUrl:'template/loading.html',
 			backdrop:"static",keyboard:false
 		})
-		$http({
-			method:'POST',
-			url:'/op_tool/modules/dir_tree.php',
-			data: $.param({ 'server_name' : $scope.server.name}),
-			headers:{'Content-Type': 'application/x-www-form-urlencoded'}
-		})
-		.then(function dataGet(response){
-			//ng-clickも当然信頼ずみ。勝手にサニタイズされないように。
-			//$scope.dirTree = $sce.trustAs($sce.HTML,response.data);
-			$scope.tree = response.data;
-			loadingModal.close();
-		},function errorCallback(response){
-			alert(response);
-		})
+		getSource.dirTree($scope.server.name).then(function(res){
+			$scope.tree = res.data;
+		}).finally(function(){loadingModal.close()})
 	}
 	$scope.show = function($event) {
 		// console.log($event.target.attributes.name.value);
@@ -56,6 +44,7 @@ app.controller('ModalCtrl', ['$scope', '$uibModalInstance' ,function($scope, $so
             $sourceModal.close();
       }
     }])
+
 /*
 ここだけj-queryのままっす。
 */

@@ -5,7 +5,6 @@ function dirSearch($path){
 		$dirQueue = array();
 		while (false !== ($dir= readdir($handle))){
 			if(is_dir($path.$dir) && $dir != '.' && $dir !='..'){
-				// $dirQueue[] = array("name" =>$dir, "group" =>  "group1");
 				$dirQueue[] = array("name" =>$dir);
 			}
 		}
@@ -15,5 +14,4 @@ function dirSearch($path){
 }
 $dirArray = dirSearch($path);
 echo $dirArray;
-
 ?>
