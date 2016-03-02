@@ -22,19 +22,16 @@ angular.module('app', ['ui.router','ngSanitize', 'ui.bootstrap'])
         })
         $urlRouterProvider.otherwise("/");
     }])
-    .run(["$rootScope","$uibModal", "$http", function($scope, $modal,$http){
+    .run(["$rootScope","$uibModal", "$http", 'getSelect',function($scope, $modal,$http,getSelect){
         $scope.open = function() {
             $modal.open({templateUrl:"template/login.html", scope: $scope});
         };
-        $http({
-            method:'GET',
-            url:'/op_tool/modules/dirSearch.php'
+        getSelect.select()
+        .then(function(res){
+            $scope.servers = res.data;
+            $scope.selectServer = "--select--";
+        },function(error){
+            alert(error.messeage);
         })
-        .then(function selectData(response){
-            $scope.servers = response.data;
-        },function errorCallback(response){
-            alert(response);
-        })
-        $scope.selectServer = "--select--";
     }]);
 

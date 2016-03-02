@@ -1,7 +1,7 @@
 var app = angular.module('app')
 app.controller('mainsCtrl', function($http, $scope){
 });
-app.controller('selectController', ['$scope' , '$sce' ,'$http' ,'$uibModal','getTree','getShowSource',function($scope,$sce, $http ,$modal,getTree,getShowSource){
+app.controller('selectController', ['$timeout', '$scope' , '$sce' ,'$http' ,'$uibModal','getTree','getShowSource',function($timeout,$scope,$sce, $http ,$modal,getTree,getShowSource){
 	$scope.change = function(){
 		$scope.selectServer = $scope.server.name;
 		// console.log($scope.server.name);
@@ -9,9 +9,12 @@ app.controller('selectController', ['$scope' , '$sce' ,'$http' ,'$uibModal','get
 			templateUrl:'template/loading.html',
 			backdrop:"static",keyboard:false
 		})
-		getTree.tree($scope.server.name).then(function(res){
-			$scope.tree = res.data;
-		}).finally(function(){loadingModal.close()})
+		// console.log(!!loadingModal);
+		$timeout(function(){
+			getTree.tree($scope.server.name).then(function(res){
+				$scope.tree = res.data;
+			}).finally(function(){loadingModal.close()})
+		},1000);
 	}
 	$scope.show = function($event) {
 		getShowSource.source($event.target.attributes.name.value).then(function(res){
@@ -33,7 +36,6 @@ app.controller('ModalCtrl', ['$scope', '$uibModalInstance' ,function($scope, $so
             $sourceModal.close();
       }
     }])
-
 /*
 ここだけj-queryのままっす。
 */

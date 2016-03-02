@@ -29,3 +29,16 @@ app.factory('getShowSource', ['$http' , function($http){
     }
 	return {source:getShowSource}
 }])
+app.factory('getSelect', ['$http' , function($http){
+    var getSelect = function(param){
+        return $http({
+            method:'GET',
+            url:'/op_tool/modules/dirSearch.php'
+        })
+        .then(function(data, status, headers, config) {
+        	// console.log(data);
+            return data;
+        });
+    }
+	return {select:getSelect}
+}])
