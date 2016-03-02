@@ -1,7 +1,7 @@
 var app = angular.module('app')
 app.controller('mainsCtrl', function($http, $scope){
 });
-app.controller('selectController', ['$scope' , '$sce' ,'$http' ,'$uibModal','getSource',function($scope,$sce, $http ,$modal,getSource){
+app.controller('selectController', ['$scope' , '$sce' ,'$http' ,'$uibModal','getTree','getShowSource',function($scope,$sce, $http ,$modal,getTree,getShowSource){
 	$scope.change = function(){
 		$scope.selectServer = $scope.server.name;
 		// console.log($scope.server.name);
@@ -9,34 +9,23 @@ app.controller('selectController', ['$scope' , '$sce' ,'$http' ,'$uibModal','get
 			templateUrl:'template/loading.html',
 			backdrop:"static",keyboard:false
 		})
-		getSource.dirTree($scope.server.name).then(function(res){
+		getTree.tree($scope.server.name).then(function(res){
 			$scope.tree = res.data;
 		}).finally(function(){loadingModal.close()})
 	}
 	$scope.show = function($event) {
-		// console.log($event.target.attributes.name.value);
-	    $http({
-	        method:'POST',
-	        url:'/op_tool/modules/show_source.php',
-	        data: $.param({ 'source' : $event.target.attributes.name.value}),
-	        headers:{'Content-Type': 'application/x-www-form-urlencoded' , 'Cache-Control': 'no-cache'}
-	      })
-	      .then(function sourceGet(response){
-	        $scope.getSource = response.data;
-	      	// console.log("show() = " + $scope.getSource)
-	      },function errorCallback(response){
-	        alert(response);
-	      })
-	      .finally(function sourceShow(){
-		    var sourceModal = $modal.open({
-		      templateUrl: 'template/sourceView.html',
-		      controller: 'ModalCtrl',
-		      scope: $scope
-		    });
-	      })
+		getShowSource.source($event.target.attributes.name.value).then(function(res){
+			$scope.getSource = res.data;
+		})
+		.finally(function sourceShow(){
+			var sourceModal = $modal.open({
+				templateUrl: 'template/sourceView.html',
+				controller: 'ModalCtrl',
+				scope: $scope
+			});
+		})
 	}
 }]);
-
 app.controller('ModalCtrl', ['$scope', '$uibModalInstance' ,function($scope, $sourceModal) {
       $scope.source = $scope.getSource;
       // console.log("Modal = " + $scope.source);
