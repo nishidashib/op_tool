@@ -15,7 +15,6 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
     <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
-    <script src="js/leanModal.min.js"></script>
     <script src="./js/script.js"></script>
     <script src="./js/cat.js"></script>
     <script type="text/javascript">
@@ -73,15 +72,23 @@
                     <script>select();</script>
                 </select>
             </div>
-            <div id="modal-source"><!-- ソース表示に使用-->
-                <div class="modal_close"></div>
-                <div id="modal_insert"></div>
-            </div><!-- /#modal-source -->
+            <div class="modal fade" id="holiday-oct">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                          <div class="modal-header">
+                            <button class="close" data-dismiss="modal">
+                              <span aria-hidden="true">&times;</span><span class="sr-only">閉じる</span>
+                            </button>
+                          </div>
+                        <div class="modal-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- /#page-wrapper -->
+
         <!-- 以下二つは隠しリンク。これがないと、ajaxで取得した要素に対してleanmodalできない。-->
-        <!-- ソース表示用隠しリンク -->
-        <a href="#modal-source" id="modal-source-hiddenLink" style="display:none"></a>
         <!-- ログインフォーム用隠しリンク -->
         <a href="#modal-login" id="modal-login-hiddenLink" style="display:none"></a>
     </div>

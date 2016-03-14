@@ -23,7 +23,6 @@ $(function(){
 			.done(function(data,datatype) {
 				//alert(data);
 				$(loading).remove();
-				// console.log(server);
 	    		$('#dir_tree').remove();
 	    		$('select').after($(data));
 			})
@@ -50,7 +49,7 @@ $(function(){
     			);
 			});
 	});
-	$(document).on('click', "a[rel=leanModal]",function(e) {
+	$(document).on('click', "a[data-toggle=modal]",function(e) {
 		$('body').css({"overflow": "hidden"});
 		e.preventDefault();
 		//alert($(this).attr('name'));//ファイルをフルパスで表示する。
@@ -61,26 +60,13 @@ $(function(){
 			data: {'source': $(this).attr("name")},
 			datatype: 'html',
 		})
-		.done(function(data,datatype) {
-			/*
-			ajaxで取得してきた要素に対して、leanmodalを使用できなかったため、
-			元からある隠しリンクを踏ませるように設定。
-			*/
-			$('#modal-source-hiddenLink').trigger("click");
-			$('#modal_insert').html(data);
-
+		.done(function(data) {
+			$('.modal-body').html(data);
 			return false;
 		})
 		.fail(function(errorThrown) {
 	        alert(errorThrown.message);
+	        return false;
 		})
-		.always(function() {
-			//console.log("complete");
-		});
 	});
-	$('#modal-source-hiddenLink').leanModal({
-	    top: 10,
-	    overlay : 0.95,
-	    closeButton: ".modal_close"
-	  });
 });

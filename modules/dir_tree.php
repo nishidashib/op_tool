@@ -28,7 +28,7 @@ function SubDir($path,$dir){
 
 function printQueue($path,$queue){
 	foreach ($queue as $file){
-		echo "<li><a rel=\"leanModal\" name=\"".$path.$file."\" href=\"".$path.$file."\">$file</a></li>\n";
+		echo "<li><a data-toggle=\"modal\" data-target=\"#holiday-oct\" name=\"".$path.$file."\">$file</a></li>\n";
 	}
 }
 echo "<div id=\"dir_tree\">";
